@@ -1,11 +1,10 @@
 import streamlit as st
-import os
 from PIL import Image
 from models import load_vocab_and_models, generate_image_description
-from utils import image_to_hash
 import config
 import json
 from vocabulary import Vocabulary
+import hashlib
 
 st.set_page_config(**config.PAGE_CONFIG)
 
@@ -52,6 +51,9 @@ def resize_image(image, max_width,max_height):
     return image.resize((new_width, new_height), Image.LANCZOS)
 
 MAX_WIDTH, MAX_HEIGHT = 600,450
+
+def image_to_hash(image):
+    return hashlib.md5(image.tobytes()).hexdigest()
 
 with st.container():
     st.markdown("<div class='column'>", unsafe_allow_html=True)
