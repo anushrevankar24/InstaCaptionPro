@@ -118,10 +118,6 @@ def generate_prompt(session_state):
     )
     
 
-
-
-
-
 FOOTER_HTML = """
 <div class="footer">
     <p>

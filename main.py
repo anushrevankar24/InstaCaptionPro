@@ -19,13 +19,9 @@ with st.spinner("Loading models and assets..."):
 
 st.markdown(config.CUSTOM_CSS, unsafe_allow_html=True)
 
-
 st.markdown("<h1 style='text-align: center; color: #FF7518;'>AI Instagram Caption Generator</h1>", unsafe_allow_html=True)
 
-
 st.markdown("<p style='text-align: center; font-size: 22    px;'>Create captivating Instagram captions in seconds</p>", unsafe_allow_html=True)
-
-
 
 
 if 'description' not in st.session_state:
@@ -76,8 +72,7 @@ with st.container():
                 st.session_state.current_image_description = None
         except Exception as e:
             st.error(f"Error processing image: {str(e)}")
-    
- 
+
     st.session_state.description = st.text_area("Description (optional)", st.session_state.description)
     col1, col2 = st.columns(2)
     with col1:
