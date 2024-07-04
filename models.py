@@ -7,10 +7,8 @@ import torch
 from PIL import Image
 import os
 import google.generativeai as genai
-from dotenv import load_dotenv
 import pickle
 from vocabulary import Vocabulary
-load_dotenv()
 
 @st.cache_resource
 def load_vocab():
@@ -22,7 +20,7 @@ def load_vocab():
 def load_models(vocab_size):
     embed_size = 256
     hidden_size = 512
-    device = torch.device("cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     encoder = EncoderCNN(embed_size).to(device)
     decoder = DecoderRNN(embed_size, hidden_size, vocab_size).to(device)
