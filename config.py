@@ -122,9 +122,9 @@ FOOTER_HTML = """
 <div class="footer">
     <p>
         InstaCaptionPro - Designed and developed by Anush Revankar  
-        <a href="https://github.com/anushrevankar24" target="_blank"><img src="data:image/png;base64,{github_logo}" alt="GitHub" /> GitHub</a>
-        <a href="https://www.linkedin.com/in/anush-revankar-0ab02225b" target="_blank"><img src="data:image/png;base64,{linkedin_logo}" alt="LinkedIn" /> LinkedIn</a>
-        <a href="https://instagram.com/anushrevankar24?igshid=ZDdkNTZiNTM=" target="_blank"><img src="data:image/png;base64,{instagram_logo}" alt="Instagram" /> Instagram</a>
+        <a href="https://github.com/anushrevankar24" target="_blank"><img src="./app/static/github-logo.png" alt="GitHub" /> GitHub</a>
+        <a href="https://www.linkedin.com/in/anush-revankar-0ab02225b" target="_blank"><img src="./app/static/linkedin-logo.png" alt="LinkedIn" /> LinkedIn</a>
+        <a href="https://instagram.com/anushrevankar24?igshid=ZDdkNTZiNTM=" target="_blank"><img src="./app/static/instagram-logo.png" alt="Instagram" /> Instagram</a>
     </p>
 </div>
 """

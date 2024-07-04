@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from PIL import Image
 from models import load_vocab_and_models, generate_image_description
-from utils import load_static_assets, image_to_hash
+from utils import image_to_hash
 import config
 import json
 from vocabulary import Vocabulary
@@ -12,7 +12,6 @@ st.set_page_config(**config.PAGE_CONFIG)
 with st.spinner("Loading models and assets..."):
     try:
         vocab, encoder, decoder, device, model = load_vocab_and_models()
-        github_logo, linkedin_logo, instagram_logo = load_static_assets()
     except Exception as e:
         st.error(f"Error loading models and assets: {str(e)}")
         st.stop()
@@ -104,12 +103,7 @@ if st.button("Generate Captions"):
     else:
         st.error("Please upload an image to generate captions.")
         
-    
-st.markdown(config.FOOTER_HTML.format(
-    github_logo=github_logo,
-    linkedin_logo=linkedin_logo,
-    instagram_logo=instagram_logo
-), unsafe_allow_html=True)
+st.markdown(config.FOOTER_HTML, unsafe_allow_html=True) 
 
 
         

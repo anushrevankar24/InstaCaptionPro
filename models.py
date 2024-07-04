@@ -10,6 +10,7 @@ import google.generativeai as genai
 import pickle
 from vocabulary import Vocabulary
 
+
 @st.cache_resource
 def load_vocab():
     vocab_file = "models/vocab.pkl"
