@@ -66,8 +66,8 @@ CUSTOM_CSS = """
         background-color: #FFF8F0;
         color: #6c757d;
         text-align: center;
-        padding: 10px 0;
-        font-size: 14px;
+        padding: 5px 0;
+        font-size: 10px;
     }
     .footer a {
         color: #FF7518;
@@ -78,8 +78,8 @@ CUSTOM_CSS = """
         color: #FF5F1F;
     }
     .footer img {
-        height: 20px;
-        width: 20px;
+        height: 15px;
+        width: 15px;
         margin-right: 5px;
         vertical-align: middle;
     }
@@ -95,9 +95,12 @@ CUSTOM_CSS = """
         color: #333;
         margin-right: 30px;  /* Make space for the copy button */
     }
+
+   
    
     </style>
 """
+
 
 
 CAPTION_HTML = """
@@ -107,7 +110,7 @@ CAPTION_HTML = """
 """
 
 def generate_prompt(session_state):
-    prompt_template = st.secrets.prompt_template
+    prompt_template = st.secrets.PROMPT_TEMPLATE
     return prompt_template.format(
         no_of_captions=session_state.no_of_captions,
         image_description=session_state.current_image_description,

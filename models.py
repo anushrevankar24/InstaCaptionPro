@@ -25,8 +25,18 @@ def load_models(vocab_size):
     encoder = EncoderCNN(embed_size).to(device)
     decoder = DecoderRNN(embed_size, hidden_size, vocab_size).to(device)
     
-    encoder.load_state_dict(torch.load("models/encoder-3.pkl", map_location=device))
-    decoder.load_state_dict(torch.load("models/decoder-3.pkl", map_location=device))
+    encoder_checkpoint = torch.load("models/encoder-9.pkl", map_location=device)
+    decoder_checkpoint = torch.load("models/decoder-9.pkl", map_location=device)
+    
+    if isinstance(encoder_checkpoint, dict) and 'model_state_dict' in encoder_checkpoint:
+        encoder.load_state_dict(encoder_checkpoint['model_state_dict'])
+    else:
+        raise ValueError("Encoder checkpoint is not in the expected format")
+    
+    if isinstance(decoder_checkpoint, dict) and 'model_state_dict' in decoder_checkpoint:
+        decoder.load_state_dict(decoder_checkpoint['model_state_dict'])
+    else:
+        raise ValueError("Decoder checkpoint is not in the expected format")
     
     encoder.eval()
     decoder.eval()

@@ -19,13 +19,10 @@ st.markdown(config.CUSTOM_CSS, unsafe_allow_html=True)
 
 st.markdown("<h1 style='text-align: center; color: #FF7518;'>AI Instagram Caption Generator</h1>", unsafe_allow_html=True)
 
-st.markdown("<p style='text-align: center; font-size: 22    px;'>Create captivating Instagram captions in seconds</p>", unsafe_allow_html=True)
-
-
 if 'description' not in st.session_state:
     st.session_state.description = ''
 if 'tone' not in st.session_state:
-    st.session_state.tone = 'Formal'
+    st.session_state.tone = "💼 Formal"
 if 'add_hashtags' not in st.session_state:
     st.session_state.add_hashtags = True
 if 'add_emojis' not in st.session_state:
@@ -37,20 +34,6 @@ if 'current_image_hash' not in st.session_state:
 if 'current_image_description' not in st.session_state:
     st.session_state.current_image_description = None
 
-def resize_image(image, max_width,max_height):
-    
-    img_width, img_height = image.size
-    aspect_ratio = img_width / img_height
-    frame_ratio = max_width / max_height
-    if aspect_ratio > frame_ratio:
-        new_width = max_width
-        new_height = int(new_width / aspect_ratio)
-    else:
-        new_height = max_height
-        new_width = int(new_height * aspect_ratio)
-    return image.resize((new_width, new_height), Image.LANCZOS)
-
-MAX_WIDTH, MAX_HEIGHT = 600,450
 
 def image_to_hash(image):
     return hashlib.md5(image.tobytes()).hexdigest()
@@ -59,14 +42,9 @@ with st.container():
     st.markdown("<div class='column'>", unsafe_allow_html=True)
     uploaded_file = st.file_uploader("Caption this image...", type=['jpg', 'png', 'gif'])
     if uploaded_file is not None:
-        try:
+        try:    
             image = Image.open(uploaded_file).convert("RGB")
-            resized_image = resize_image(image, MAX_WIDTH, MAX_HEIGHT)
-            background = Image.new('RGB', (MAX_WIDTH, MAX_HEIGHT), (255, 255, 255))
-            paste_position = ((MAX_WIDTH - resized_image.width) // 2,
-                              (MAX_HEIGHT - resized_image.height) // 2)
-            background.paste(resized_image, paste_position)
-            st.image(background, use_column_width=False)
+            st.image(image,width=300,use_column_width=False);
             image_hash = image_to_hash(image)
             if st.session_state.current_image_hash != image_hash:
                 st.session_state.current_image_hash = image_hash
@@ -75,11 +53,18 @@ with st.container():
             st.error(f"Error processing image: {str(e)}")
 
     st.session_state.description = st.text_area("Description (optional)", st.session_state.description)
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns([2,1])
     with col1:
-       st.session_state.tone = st.selectbox("Tone", ["Friendly","Formal", "Casual", "Attitude", "Luxury", "Excited", "Inspiring"], index=["Friendly","Formal", "Casual", "Attitude", "Luxury", "Excited", "Inspiring"].index(st.session_state.tone))
+        tone_options = [
+            "😊 Friendly", "💼 Formal", "🥳 Excited", "😎 Casual", "👔 Professional", 
+            "💪 Confident", "🤗 Empathetic", "💎 Luxury", "✨ Inspiring", "😏 Sarcastic",
+            "😂 Humorous", "🎉 Enthusiastic", "🥂 Sophisticated",  "😎 Cool","✈️ Wanderlust",
+            "🥰 Romantic", "🚀 Motivational",  "🧠 Thoughtful"]
+        st.session_state.tone = st.selectbox("Tone", tone_options, 
+                                            index=tone_options.index(st.session_state.tone))
     with col2:
        st.session_state.no_of_captions= st.selectbox("No of Captions", [5, 3, 1], index=[5, 3, 1].index(st.session_state.no_of_captions))
+       
     col3, col4 = st.columns(2)
 
     with col3:
