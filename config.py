@@ -95,9 +95,6 @@ CUSTOM_CSS = """
         color: #333;
         margin-right: 30px;  /* Make space for the copy button */
     }
-
-   
-   
     </style>
 """
 
