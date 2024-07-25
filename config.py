@@ -97,9 +97,6 @@ CUSTOM_CSS = """
     }
     </style>
 """
-
-
-
 CAPTION_HTML = """
 <div class='caption-container'>
     <p class='caption-text'><strong>Caption {i}:</strong> {caption}</p>
