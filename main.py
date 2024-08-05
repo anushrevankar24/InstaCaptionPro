@@ -22,7 +22,7 @@ st.markdown("<h1 style='text-align: center; color: #FF7518;'>AI Instagram Captio
 if 'description' not in st.session_state:
     st.session_state.description = ''
 if 'tone' not in st.session_state:
-    st.session_state.tone = "💼 Formal"
+    st.session_state.tone = "😎 Casual"
 if 'add_hashtags' not in st.session_state:
     st.session_state.add_hashtags = True
 if 'add_emojis' not in st.session_state:
@@ -83,6 +83,7 @@ if st.button("Generate Captions"):
                 prompt = config.generate_prompt(st.session_state)
                 response = model.generate_content(prompt)
                 captions = json.loads(response.text)
+                st.write(image_description)
             for i, caption in enumerate(captions, 1):
                 st.markdown(config.CAPTION_HTML.format(i=i, caption=caption), unsafe_allow_html=True)
       except Exception as e:

@@ -67,12 +67,12 @@ CUSTOM_CSS = """
         color: #6c757d;
         text-align: center;
         padding: 5px 0;
-        font-size: 10px;
+        font-size: 8px;
     }
     .footer a {
         color: #FF7518;
         text-decoration: none;
-        margin: 0 10px;
+        margin: 0 5px;
     }
     .footer a:hover {
         color: #FF5F1F;
@@ -80,7 +80,7 @@ CUSTOM_CSS = """
     .footer img {
         height: 15px;
         width: 15px;
-        margin-right: 5px;
+        margin-right: 3px;
         vertical-align: middle;
     }
 .caption-container {
@@ -118,9 +118,9 @@ def generate_prompt(session_state):
 FOOTER_HTML = """
 <div class="footer">
     <p>
-        InstaCaptionPro - Designed and developed by Anush Revankar  
+        InstaCaptionPro - 
         <a href="https://github.com/anushrevankar24" target="_blank"><img src="./app/static/github-logo.png" alt="GitHub" /> GitHub</a>
-        <a href="https://www.linkedin.com/in/anush-revankar-0ab02225b" target="_blank"><img src="./app/static/linkedin-logo.png" alt="LinkedIn" /> LinkedIn</a>
+        <a href="https://www.linkedin.com/in/anushrevankar24" target="_blank"><img src="./app/static/linkedin-logo.png" alt="LinkedIn" /> LinkedIn</a>
         <a href="https://instagram.com/anushrevankar24?igshid=ZDdkNTZiNTM=" target="_blank"><img src="./app/static/instagram-logo.png" alt="Instagram" /> Instagram</a>
     </p>
 </div>
