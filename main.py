@@ -83,14 +83,12 @@ if st.button("Generate Captions"):
                 prompt = config.generate_prompt(st.session_state)
                 response = model.generate_content(prompt)
                 captions = json.loads(response.text)
-                st.write(image_description)
             for i, caption in enumerate(captions, 1):
                 st.markdown(config.CAPTION_HTML.format(i=i, caption=caption), unsafe_allow_html=True)
       except Exception as e:
             st.error(f"Error generating captions: {str(e)}")
     else:
         st.error("Please upload an image to generate captions.")
-        
 st.markdown(config.FOOTER_HTML, unsafe_allow_html=True) 
 
 

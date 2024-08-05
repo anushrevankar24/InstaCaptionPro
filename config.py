@@ -67,7 +67,7 @@ CUSTOM_CSS = """
         color: #6c757d;
         text-align: center;
         padding: 5px 0;
-        font-size: 8px;
+        font-size: 10px;
     }
     .footer a {
         color: #FF7518;
@@ -78,8 +78,8 @@ CUSTOM_CSS = """
         color: #FF5F1F;
     }
     .footer img {
-        height: 15px;
-        width: 15px;
+        height: 20px;
+        width: 20px;
         margin-right: 3px;
         vertical-align: middle;
     }
@@ -119,9 +119,9 @@ FOOTER_HTML = """
 <div class="footer">
     <p>
         InstaCaptionPro - 
-        <a href="https://github.com/anushrevankar24" target="_blank"><img src="./app/static/github-logo.png" alt="GitHub" /> GitHub</a>
-        <a href="https://www.linkedin.com/in/anushrevankar24" target="_blank"><img src="./app/static/linkedin-logo.png" alt="LinkedIn" /> LinkedIn</a>
-        <a href="https://instagram.com/anushrevankar24?igshid=ZDdkNTZiNTM=" target="_blank"><img src="./app/static/instagram-logo.png" alt="Instagram" /> Instagram</a>
+        <a href="https://github.com/anushrevankar24" target="_blank"><img src="./app/static/github-logo.png" alt="GitHub" /></a>
+        <a href="https://www.linkedin.com/in/anushrevankar24" target="_blank"><img src="./app/static/linkedin-logo.png" alt="LinkedIn" /></a>
+        <a href="https://instagram.com/anushrevankar24?igshid=ZDdkNTZiNTM=" target="_blank"><img src="./app/static/instagram-logo.png" alt="Instagram" /></a>
     </p>
 </div>
 """
