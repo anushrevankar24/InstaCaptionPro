@@ -2,7 +2,16 @@
 
 ## AI Instagram Caption Generator
 
-This project is an AI-powered Instagram caption generator built using Streamlit. Users can upload an image, optionally provide a description, select a tone, and generate multiple captions with options to include hashtags and emojis. The caption generation leverages a pre-trained model integrated with Google Gemini API.
+InstaCaption Pro is an AI-powered tool designed to help users generate Instagram captions effortlessly. I created this project because I often struggled to come up with suitable captions for my posts. Searching online for ideas and figuring out which caption would best fit my images was time-consuming. To simplify this process, I decided to build InstaCaption Pro.
+
+The main goal of this project is to create engaging and relevant captions for Instagram posts. Users can upload an image, add an optional description, choose the tone of the caption, and select the number of captions they want. They also have the option to include hashtags and emojis.
+
+The application is built using Streamlit for an easy and interactive user experience. For the deep learning models, I utilized PyTorch and integrated Google Generative AI for generating captions. At the core of the app is an Encoder-Decoder architecture. The encoder uses a pre-trained ResNet50 model to extract features from the uploaded image, while an LSTM-based decoder generates a description based on these features. This description, along with user-selected options like tone and the number of captions, is sent to the Google Generative AI model, which creates a set of captions that are displayed to the user.
+
+To ensure a smooth and efficient user experience, the application employs several optimization techniques. It uses Streamlit's caching mechanism to prevent the model from loading with every request, significantly improving response times. Additionally, session state management retains user inputs and generated descriptions. For instance, if a user changes the number of captions or the tone without altering the image, the app does not regenerate the image description, saving both time and computational resources. Overall, InstaCaption Pro aims to make the process of creating engaging Instagram captions quick and effortless.
+
+## Demo of the Project
+[Video Link](https://drive.google.com/file/d/1dGzSpKMzISMa1IQ7jMHh8oVxdDXxBQ18/view?usp=drive_link) 
 
 ## Features
 
