@@ -71,27 +71,28 @@ with st.container():
         st.session_state.add_hashtags= st.checkbox("Add hashtags", st.session_state.add_hashtags)
     with col4:
         st.session_state.add_emojis= st.checkbox("Add emojis", st.session_state.add_emojis)
-    
-  
+
+
 if st.button("Generate Captions"):
-    if st.session_state.current_image_hash is not None:
-      try:
-            with st.spinner("Generating Captions..."):
-                if st.session_state.current_image_description is None:
-                     st.session_state.current_image_description = generate_image_description(image, encoder, decoder, device, vocab)
-                image_description = st.session_state.current_image_description
-                prompt = config.generate_prompt(st.session_state)
-                response = model.generate_content(prompt)
-                captions = json.loads(response.text)
-            for i, caption in enumerate(captions, 1):
-                st.markdown(config.CAPTION_HTML.format(i=i, caption=caption), unsafe_allow_html=True)
-      except Exception as e:
-            st.error(f"Error generating captions: {str(e)}")
-    else:
-        st.error("Please upload an image to generate captions.")
+    try:
+        with st.spinner("Generating Captions..."):
+            if st.session_state.current_image_description is None:
+                st.session_state.current_image_description = generate_image_description(image, encoder, decoder, device, vocab)
+            image_description = st.session_state.current_image_description
+            prompt = config.generate_prompt(st.session_state)
+            response = model.generate_content(prompt)
+            captions_data = json.loads(response.text)
+            if "captions" in captions_data and isinstance(captions_data["captions"], list):
+                captions = captions_data["captions"]
+                for i, caption in enumerate(captions, 1):
+                    st.markdown(config.CAPTION_HTML.format(i=i, caption=caption), unsafe_allow_html=True)
+            else:
+                st.error("Invalid JSON response")
+    except json.JSONDecodeError as e:
+        st.error(f"Error parsing JSON response: {str(e)}")
+    except Exception as e:
+        st.error(f"Error generating captions: {str(e)}")
 st.markdown(config.FOOTER_HTML, unsafe_allow_html=True) 
-
-
         
         
 
